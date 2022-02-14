@@ -19,29 +19,10 @@ class Solution {
             return false;
         }
         
-     
-        Stack<TreeNode> nodeStack = new Stack<>();
-        TreeNode curr = root;
-        
-        nodeStack.push(curr);
-        
-        while(nodeStack.size()!=0){
-            TreeNode current_node = nodeStack.pop();
-            
-            if(current_node.left==null && current_node.right==null && targetSum == current_node.val){
-                return true;
-            }
-            
-           if(current_node.left!=null){
-                current_node.left.val = current_node.left.val + current_node.val;
-                nodeStack.push(current_node.left);
-            }
-            
-            if(current_node.right!=null){
-                current_node.right.val = current_node.right.val + current_node.val;
-                nodeStack.push(current_node.right);
-            }
+        if(root.left==null && root.right==null){
+            return targetSum == root.val;
         }
-        return false;
+        
+        return hasPathSum(root.left,targetSum-root.val) || hasPathSum(root.right,targetSum-root.val);
     }
 }
