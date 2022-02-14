@@ -13,13 +13,15 @@ class Solution {
            prefix = prefix * nums[i];
         }
         
+        
         int postfix = 1;
 
         for(int i=nums.length-1;i>=0;i--){
             op[i] = op[i] * postfix;
             postfix = postfix * nums[i];
         }
-        
+        System.out.println();
+         
         
        
     return op;
